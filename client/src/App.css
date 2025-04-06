@@ -1,0 +1,53 @@
+/* App.css */
+
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.app-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.canvas-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0; /* arka planda */
+}
+
+.control-panel {
+  position: absolute;
+  top: 1.5rem;
+  left: 1.5rem;
+  z-index: 10;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.zeytin_yesili { /* Ana koyu zemin */
+  background-color: #606C38;
+}
+
+.derin_yesil { /* En koyu arka plan */
+  background-color: #283618;
+}
+
+.krem { /* Acik tema arka plan olabilir, yazi zemini */
+  background-color: #FEFAE0;
+}
+
+.tarcin_turuncu { /* butonlar vb */
+  background-color: #DDA15E;
+}
+
+.yanik_turuncu { /* hover aktif durumalari */
+  background-color: #BC6C25;
+}

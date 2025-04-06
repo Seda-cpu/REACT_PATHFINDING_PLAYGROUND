@@ -1,0 +1,72 @@
+import { Canvas } from '@react-three/fiber'
+import { OrbitControls } from '@react-three/drei'
+import MapGrid from './MapGrid'
+import { useEffect, useState } from 'react'
+import Robot from './Robot'
+import { useSimStore } from './store/useSimStore'
+import { getGridMatrix } from './utils/getGridMatrix'
+import { requestAStarPath } from '../api'
+
+const Target = ({position}) => {
+    return (
+        <mesh position={[position[0], 0.5, position[1]]}>
+            <sphereGeometry args={[0.3, 32, 32]}/>
+            <meshStandardMaterial color="red"/>
+        </mesh>
+    )
+}
+
+const Scene = () => {
+    const targetPos = useSimStore((s) => s.target)
+    const setTarget = useSimStore((s) => s.setTarget)
+
+    const grid = useSimStore((s) => s.grid)
+
+    const robotPos = useSimStore((s) => s.robotPos)
+    const setRobotPos = useSimStore((s) => s.setRobotPos)
+
+    const setPath = useSimStore((s) => s.setPath)
+
+    
+    useEffect(() => {
+
+        if(!grid || !targetPos || !robotPos) return
+
+        const matrix = getGridMatrix(grid)
+        console.log('Grid Matrix:', getGridMatrix(grid))
+        const start = {
+            x: Math.floor(robotPos[0]),
+            z: Math.floor(robotPos[1])
+        } 
+
+        const goal = {
+            x: targetPos[0],
+            z: targetPos[1]
+        }
+
+        requestAStarPath(matrix, start, goal).then((path) => {
+            console.log("Gelen path: ", path)
+        })
+
+    }, [targetPos, grid])
+
+
+    const handleCellClick = (x,z) => {
+        setTarget([x,z])
+    }
+    return (
+        
+        <Canvas camera={{ position: [5,5,5], fov: 50}} shadows style={{ background: '#283618' }}>
+            <ambientLight intensity={0.3}/>
+            <spotLight position={[10, 20, 10]} angle={0.35} penumbra={1} intensity={1} castShadow/>
+            <directionalLight position={[5,10,5]}/>
+            <OrbitControls/>
+            <gridHelper args={[20, 20, '#606C38', '#606C38']} />
+            <MapGrid onCellClick={handleCellClick}/>
+            {targetPos && <Target position={targetPos} /> } 
+            <Robot target={targetPos} />
+        </Canvas>
+    )
+}
+
+export default Scene
