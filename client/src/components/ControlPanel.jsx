@@ -13,37 +13,39 @@ const ControlPanel = () => {
 
     return (
         <>
-        <button onClick={() => setIsOpen(!isOpen)} className="absolute top-4 left-4 px-3 py-1 rounded z-20 tarcin_turuncu">
+        <button onClick={() => setIsOpen(!isOpen)} className="absolute top-4 left-4 px-3 py-1 rounded z-20 ebony">
             {isOpen ? '← Hide' : '→ Show'}
         </button>
         {
             isOpen && (
                 <div className="absolute top-16 left-4 z-10 p-4 rounded-lg shadow-lg space-y-4 transition-all" >
-                    <div>
-                        <h3 className="font-semibold text-lg mb-1" style={{color: "#283618"}}>🧭 Mod Seçimi</h3>
+                    <div style={{width: "220px"}}>
+                        <h3 className="font-semibold text-lg mb-1" style={{color: "#283618"}}>Mod Seçimi</h3>
                         <div style={{display: "flex", flexDirection: "row"}}>
                         <button
                             style={{marginRight: "3%" }}
                             onClick={() => setMode('target')}
                             className={`flex items-center gap-1 rounded ${
-                            mode === 'target' ? 'yanik_turuncu text-white' : 'tarcin_turuncu'
+                            mode === 'target' ? 'ebony text-white' : 'coffee'
                             }`}
                         >
-                            🎯 Hedef
+                            Hedef
                         </button>
                         <button
+                            style={{marginRight: "3%" }}
+
                             onClick={() => setMode('obstacle')}
                             className={`rounded ${
-                            mode === 'obstacle' ? 'yanik_turuncu text-white' : 'tarcin_turuncu'
+                            mode === 'obstacle' ? 'ebony text-white' : 'coffee'
                             }`}
                         >
-                            🧱 Engel
+                            Engel
                         </button>
                         </div>
                     </div>
 
                     <div>
-                        <h3 className="font-semibold text-lg mb-1">🤖 Robot Tipi</h3>
+                        <h3 className="font-semibold text-lg mb-1" style={{color: "#283618"}}>Robot Tipi</h3>
                         <select
                         value={robotType}
                         onChange={(e) => setRobotType(e.target.value)}

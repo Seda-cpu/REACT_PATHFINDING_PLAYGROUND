@@ -56,7 +56,11 @@ const Scene = () => {
     }
     return (
         
-        <Canvas camera={{ position: [5,5,5], fov: 50}} shadows style={{ background: '#283618' }}>
+        <Canvas camera={{ position: [5,5,5], fov: 50}} shadows 
+        style={{
+            background: 'radial-gradient(circle at center, #3b0a4d 0%, #2b053d 40%, #1a032e 100%)',
+          }}
+          >
             <ambientLight intensity={0.3}/>
             <spotLight position={[10, 20, 10]} angle={0.35} penumbra={1} intensity={1} castShadow/>
             <directionalLight position={[5,10,5]}/>

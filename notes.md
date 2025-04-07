@@ -59,3 +59,12 @@ Tarçın turuncu: 	#DDA15E	Buton veya vurgu
 Yanık turuncu: 	#BC6C25	Hover / aktif durumlar
 
 
+Yeni renkler
+/* SCSS HEX */
+$russian-violet: #2b053dff;
+$bright-pink-crayola: #fb6376ff;
+$ebony: #545C52;
+$eggshell: #f3efe0ff;
+$coffee: #694a38ff;
+
+https://coolors.co/2b053d-545c52-f3efe0-b2abf2-694a38
