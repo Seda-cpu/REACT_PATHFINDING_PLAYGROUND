@@ -17,8 +17,8 @@ function App() {
       <div className="canvas-wrapper">
         <Scene />
       </div>
-      <div className="control-panel ebony">
-        <div className="eggshell" style={{padding: "5%", borderRadius: "0.5rem"}}>
+      <div className="control-panel dark_moss_green">
+        <div className="cornsilk" style={{padding: "5%", borderRadius: "0.5rem"}}>
           <ControlPanel />
         </div>
       </div>

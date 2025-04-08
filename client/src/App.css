@@ -32,44 +32,24 @@ html, body, #root {
   box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
 
-mor_gradient_can
 
-.russian_violet {
-  background-color: #2b053dff
-}
-
-.bright_pink_crayola {
-  background-color: #fb6376ff
-}
-
-/* .periwinkle{
-  background-color: #b2abf2ff
-} */
-
-.eggshell{
-  background-color: #f3efe0ff
-}
-
-.coffee{
-  background-color: #694a38ff
-}
-
-.ebony{
-  background-color: #545C52;
-}
-
-.zeytin_yesili { /* Ana koyu zemin */
+/* ----- */
+.dark_moss_green { 
   background-color: #606C38;
 }
 
-.krem { /* Acik tema arka plan olabilir, yazi zemini */
+.pakistan_green {/* Ana koyu zemin */
+  background-color: #283618;
+}
+
+.cornsilk { /* Acik tema arka plan olabilir, yazi zemini */
   background-color: #FEFAE0;
 }
 
-.tarcin_turuncu { /* butonlar vb */
+.earth_yellow { /* butonlar vb */
   background-color: #DDA15E;
 }
 
-.yanik_turuncu { /* hover aktif durumalari */
+.tigers_eye { /* hover aktif durumalari */
   background-color: #BC6C25;
 }

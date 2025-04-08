@@ -50,7 +50,7 @@ const MapGrid = ({onCellClick}) => {
             {grid.flat().map((cell, idx) =>(
                 <mesh key={idx} position={[cell.x,0,cell.z]} rotation={[-Math.PI/2,0,0]} onClick={() => handleClick(cell.x,cell.z)}>
                     <planeGeometry args={[CELL_SIZE, CELL_SIZE]}/>
-                    <meshStandardMaterial color={cell.isObstacle ? '#fb6376ff' : '#f3efe0ff'}/>
+                    <meshStandardMaterial color={cell.isObstacle ? '#DDA15E' : '#FEFAE0'}/>
                 </mesh>
             ))}
         </>
