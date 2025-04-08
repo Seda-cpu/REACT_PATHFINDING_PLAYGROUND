@@ -16,6 +16,7 @@ const Target = ({position}) => {
     )
 }
 
+
 const Scene = () => {
     const targetPos = useSimStore((s) => s.target)
     const setTarget = useSimStore((s) => s.setTarget)
@@ -25,15 +26,21 @@ const Scene = () => {
     const robotPos = useSimStore((s) => s.robotPos)
     const setRobotPos = useSimStore((s) => s.setRobotPos)
 
+    const path = useSimStore((s) => s.path)
     const setPath = useSimStore((s) => s.setPath)
 
-    
+
+    /* console.log("grid: ", grid); */
+    console.log("targetPos: ", targetPos);
+    console.log("robotPos: ", robotPos);
+
     useEffect(() => {
 
         if(!grid || !targetPos || !robotPos) return
 
         const matrix = getGridMatrix(grid)
         console.log('Grid Matrix:', getGridMatrix(grid))
+
         const start = {
             x: Math.floor(robotPos[0]),
             z: Math.floor(robotPos[1])
@@ -46,6 +53,7 @@ const Scene = () => {
 
         requestAStarPath(matrix, start, goal).then((path) => {
             console.log("Gelen path: ", path)
+            setPath(path)
         })
 
     }, [targetPos, grid])
@@ -68,7 +76,7 @@ const Scene = () => {
             <gridHelper args={[20, 20, '#606C38', '#606C38']} />
             <MapGrid onCellClick={handleCellClick}/>
             {targetPos && <Target position={targetPos} /> } 
-            <Robot target={targetPos} />
+            <Robot path={path} />
         </Canvas>
     )
 }

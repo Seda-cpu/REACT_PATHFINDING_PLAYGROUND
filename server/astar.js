@@ -83,7 +83,7 @@ function getNeighbors(node, grid) {
         nz < grid.length &&
         nx < grid[0].length
         ) {
-        console.log(`Checking (${nx}, ${nz}) →`, grid[nz][nx])
+        /* console.log(`Checking (${nx}, ${nz}) →`, grid[nz][nx]) */
         if (grid[nz][nx] === 0) {
             neighbors.push({ x: nx, z: nz })
         }
