@@ -68,3 +68,8 @@ $eggshell: #f3efe0ff;
 $coffee: #694a38ff;
 
 https://coolors.co/2b053d-545c52-f3efe0-b2abf2-694a38
+https://coolors.co/170b1a-e9b979-0292ff-04f797-f865e1
+https://coolors.co/palette/606c38-283618-fefae0-dda15e-bc6c25
+
+
+
