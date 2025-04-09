@@ -42,8 +42,8 @@ const Scene = () => {
         console.log('Grid Matrix:', getGridMatrix(grid))
 
         const start = {
-            x: Math.floor(robotPos[0]),
-            z: Math.floor(robotPos[1])
+            x: Math.round(robotPos[0]),
+            z: Math.round(robotPos[1])
         } 
 
         const goal = {

@@ -50,7 +50,7 @@ function astar (grid, start, goal) {
     return []
 }
 
-/* function getNeighbors(node, grid){
+function getNeighbors(node, grid){
     const {x,z} = node
     const moves = [
         [0, 1], [1, 0], [0, -1], [-1, 0]
@@ -65,32 +65,7 @@ function astar (grid, start, goal) {
         }
     }
     return neighbors
-} */
-
-function getNeighbors(node, grid) {
-    const { x, z } = node
-    const moves = [
-        [0, 1], [1, 0], [0, -1], [-1, 0]
-    ]
-    
-    const neighbors = []
-    for (const [dx, dz] of moves) {
-        const nx = x + dx
-        const nz = z + dz
-    
-        if (
-        nx >= 0 && nz >= 0 &&
-        nz < grid.length &&
-        nx < grid[0].length
-        ) {
-        /* console.log(`Checking (${nx}, ${nz}) →`, grid[nz][nx]) */
-        if (grid[nz][nx] === 0) {
-            neighbors.push({ x: nx, z: nz })
-        }
-        }
-    }
-    return neighbors
-    }
+}
       
 function heuristic(a, b) {
     return Math.abs(a.x - b.x) + Math.abs(a.z - b.z)
