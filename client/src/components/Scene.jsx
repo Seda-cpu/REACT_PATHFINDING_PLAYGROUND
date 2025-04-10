@@ -2,19 +2,13 @@ import { Canvas } from '@react-three/fiber'
 import { OrbitControls } from '@react-three/drei'
 import MapGrid from './MapGrid'
 import { useEffect, useState } from 'react'
-import Robot from './Robot'
+import Cat from './Cat'
 import { useSimStore } from './store/useSimStore'
 import { getGridMatrix } from './utils/getGridMatrix'
 import { requestAStarPath } from '../api'
+import Target from './Target'
 
-const Target = ({position}) => {
-    return (
-        <mesh position={[position[0], 0.5, position[1]]}>
-            <sphereGeometry args={[0.3, 32, 32]}/>
-            <meshStandardMaterial color="red"/>
-        </mesh>
-    )
-}
+
 
 
 const Scene = () => {
@@ -31,15 +25,14 @@ const Scene = () => {
 
 
     /* console.log("grid: ", grid); */
-    console.log("targetPos: ", targetPos);
-    console.log("robotPos: ", robotPos);
+    /* console.log("targetPos: ", targetPos);
+    console.log("robotPos: ", robotPos); */
 
     useEffect(() => {
 
         if(!grid || !targetPos || !robotPos) return
 
         const matrix = getGridMatrix(grid)
-        console.log('Grid Matrix:', getGridMatrix(grid))
 
         const start = {
             x: Math.round(robotPos[0]),
@@ -76,7 +69,7 @@ const Scene = () => {
             <gridHelper args={[20, 20, '#606C38', '#606C38']} />
             <MapGrid onCellClick={handleCellClick}/>
             {targetPos && <Target position={targetPos} /> } 
-            <Robot path={path} />
+            <Cat path={path} />
         </Canvas>
     )
 }

@@ -2,10 +2,11 @@ import { useFrame } from '@react-three/fiber'
 import { useRef, useEffect, useState } from 'react'
 import { useSimStore } from './store/useSimStore'
 import { useGLTF, useAnimations} from '@react-three/drei'
+import * as THREE from 'three'
 
 const SPEED = 1.5 
 
-const Robot = ({ path }) => {
+const Cat = ({ path }) => {
   const group = useRef()
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -14,9 +15,17 @@ const Robot = ({ path }) => {
 
   const { scene, animations } = useGLTF('/models/kedi.glb')
   const { actions } = useAnimations(animations, group)
-  console.log(animations.map(a=>a.name))
+  /* console.log(animations.map(a=>a.name)) */
 
-
+  useEffect(() => {
+    scene.traverse((child) => {
+      if (child.isMesh) {
+        child.material = new THREE.MeshStandardMaterial({
+          color: '#BC6C25', 
+        })
+      }
+    })
+  }, [scene])
 
   useEffect(() => {
     setCurrentIndex(0);
@@ -52,10 +61,10 @@ const Robot = ({ path }) => {
   })
 
   return (
-    <group ref={group} position={[robotPos[0], 0.5, robotPos[1]]} >
-      <primitive object={scene} scale={0.2}/>
+    <group ref={group} position={[robotPos[0], 0.0, robotPos[1]]} >
+      <primitive object={scene} scale={0.15} style={{color: "#00ff00"}}/>
     </group>
   )
 }
 
-export default Robot
+export default Cat
