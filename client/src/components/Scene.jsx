@@ -1,5 +1,5 @@
 import { Canvas } from '@react-three/fiber'
-import { OrbitControls } from '@react-three/drei'
+import { OrbitControls, Html, useProgress, Preload } from '@react-three/drei'
 import MapGrid from './MapGrid'
 import { useEffect, useState } from 'react'
 import Cat from './Cat'
@@ -7,9 +7,20 @@ import { useSimStore } from './store/useSimStore'
 import { getGridMatrix } from './utils/getGridMatrix'
 import { requestAStarPath } from '../api'
 import Target from './Target'
+import { Suspense } from 'react'
 
-
-
+function Loader () {
+    const { progress } = useProgress()
+    return <Html style={{
+        position: 'absolute',
+        left: '10px',
+        bottom: '10px',
+        transform: 'none', 
+        color: '#fff',
+        fontSize: '1.2em'
+      }}
+    >{progress.toFixed(0)} % Loaded</Html>
+}
 
 const Scene = () => {
     const targetPos = useSimStore((s) => s.target)
@@ -68,8 +79,14 @@ const Scene = () => {
             <OrbitControls/>
             <gridHelper args={[20, 20, '#606C38', '#606C38']} />
             <MapGrid onCellClick={handleCellClick}/>
-            {targetPos && <Target position={targetPos} /> } 
-            <Cat path={path} />
+            <Suspense fallback={<Loader/>}>
+                {targetPos && <Target position={targetPos} /> } 
+                <Cat path={path} />
+                <Preload all />
+            </Suspense>
+
+
+            
         </Canvas>
     )
 }
