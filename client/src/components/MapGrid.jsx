@@ -1,5 +1,6 @@
 import {useState, useEffect} from 'react'
 import { useSimStore } from './store/useSimStore'
+import { GradientTexture } from '@react-three/drei'
 
 const GRID_SIZE = 10
 const CELL_SIZE = 1
@@ -86,18 +87,20 @@ const MapGrid = ({onCellClick}) => {
 
     return (
         <>
-           {/* Zemin */}
+
+            {/* Tile (Kabartmalı Hücreler) */}
             {grid.flat().map((cell, idx) => (
-                <mesh
+              <mesh
                 key={idx}
-                position={[cell.x, 0, cell.z]}
-                rotation={[-Math.PI / 2, 0, 0]}
+                position={[cell.x + cell.x * 0.05, 0, cell.z + cell.z * 0.05]}
                 onClick={() => handleClick(cell.x, cell.z)}
-                >
-                <planeGeometry args={[CELL_SIZE, CELL_SIZE]} />
-                {/* <meshStandardMaterial color={cell.isObstacle ? '#DDA15E' : '#FEFAE0'} /> */}
-                <meshStandardMaterial color={'#FEFAE0'} />
-                </mesh>
+              >
+                <boxGeometry args={[1, 0.05, 1]} />
+                <meshStandardMaterial
+                  color={cell.isObstacle ? '#DDA15E' : '#FEFAE0'}
+                />
+                
+              </mesh>
             ))}
 
             {/* Pillars */}
