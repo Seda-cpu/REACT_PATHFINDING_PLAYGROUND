@@ -1,4 +1,4 @@
-import { Canvas } from '@react-three/fiber'
+import { Canvas, useFrame } from '@react-three/fiber'
 import { OrbitControls, Html, useProgress, Preload } from '@react-three/drei'
 import MapGrid from './MapGrid'
 import { useEffect, useState } from 'react'
