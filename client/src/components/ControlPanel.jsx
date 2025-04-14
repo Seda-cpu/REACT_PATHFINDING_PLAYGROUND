@@ -13,7 +13,7 @@ const ControlPanel = () => {
 
     return (
         <>
-        <button onClick={() => setIsOpen(!isOpen)} className="absolute top-4 left-4 px-3 py-1 rounded z-20 earth_yellow">
+        <button onClick={() => setIsOpen(!isOpen)} className="absolute top-4 left-4 px-3 py-1 rounded z-20 wisteria_purple">
             {isOpen ? '← Hide' : '→ Show'}
         </button>
         {
@@ -26,7 +26,7 @@ const ControlPanel = () => {
                             style={{marginRight: "3%" }}
                             onClick={() => setMode('target')}
                             className={`flex items-center gap-1 rounded ${
-                            mode === 'target' ? 'tigers_eye text-white' : 'earth_yellow'
+                            mode === 'target' ? 'wisteria_purple text-white' : 'pale_pink'
                             }`}
                         >
                             Hedef
@@ -36,7 +36,7 @@ const ControlPanel = () => {
 
                             onClick={() => setMode('obstacle')}
                             className={`rounded ${
-                            mode === 'obstacle' ? 'tigers_eye text-white' : 'earth_yellow'
+                            mode === 'obstacle' ? 'wisteria_purple text-white' : 'pale_pink'
                             }`}
                         >
                             Engel

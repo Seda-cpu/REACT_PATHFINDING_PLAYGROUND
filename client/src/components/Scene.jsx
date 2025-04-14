@@ -70,14 +70,15 @@ const Scene = () => {
         
         <Canvas camera={{ position: [5,5,5], fov: 50}} shadows 
         style={{
-            background: 'radial-gradient(circle at center,rgb(57, 76, 36) 0%, #283618 40%,rgb(27, 39, 13) 100%)',
+            background: 'radial-gradient(circle at center, #CDF0EA 0%,rgb(185, 240, 231) 40%,rgb(141, 240, 224) 100%)',
+            /* background: 'radial-gradient(circle at center,rgb(57, 76, 36) 0%, #283618 40%,rgb(27, 39, 13) 100%)', */
           }}
           >
             <ambientLight intensity={0.3}/>
             <spotLight position={[10, 20, 10]} angle={0.35} penumbra={1} intensity={1} castShadow/>
             <directionalLight position={[5,10,5]}/>
             <OrbitControls/>
-            <gridHelper args={[20, 20, '#606C38', '#606C38']} />
+            <gridHelper args={[20, 20, 'rgb(117, 185, 173)', 'rgb(117, 185, 173)']} />
             <MapGrid onCellClick={handleCellClick}/>
             <Suspense fallback={<Loader/>}>
                 {targetPos && <Target position={targetPos} /> } 

@@ -104,8 +104,8 @@ const MapGrid = ({onCellClick}) => {
               >
                 <boxGeometry args={[FINAL_SIZE, 0.05, FINAL_SIZE]} />
                 <meshStandardMaterial
-                    color={cell.isObstacle ? '#DDA15E' : '#FEFAE0'}
-                    emissive={hoveredCell === idx ? '#DDA15E' : 'black'}
+                    color={cell.isObstacle ? '#f7dbf0' : '#BEAEE2'}
+                    emissive={hoveredCell === idx ? '#f7dbf0' : 'black'}
                     emissiveIntensity={hoveredCell === idx ? 0.5 : 0}
                 />
                 
@@ -118,7 +118,7 @@ const MapGrid = ({onCellClick}) => {
                 cell.isObstacle && (
                     <mesh key={`pillar-${idx}`} position={[cell.x, 0.25, cell.z]}>
                         <cylinderGeometry args={[0.1, 0.1, 0.7, 32]} />
-                        <meshStandardMaterial color={'#BC6C25'} />
+                        <meshStandardMaterial color={'#BEAEE2'} />
                     </mesh>
                 )
             )}
@@ -127,7 +127,7 @@ const MapGrid = ({onCellClick}) => {
             {bridges.map((b) => (
                 <mesh key={b.id} position={b.position}>
                 <boxGeometry args={b.scale} />
-                <meshStandardMaterial color={'#606C38'} />
+                <meshStandardMaterial color={'#F9F9F9'} />
                 </mesh>
             ))}
         </>

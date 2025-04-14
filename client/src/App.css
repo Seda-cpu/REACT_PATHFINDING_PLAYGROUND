@@ -32,6 +32,27 @@ html, body, #root {
   box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
 
+.non_photo_blue {
+  background-color: #CDF0EA;
+}
+
+.seasalt {
+  background-color: #F9F9F9;
+}
+
+.pale_pink {
+  background-color: #f7dbf0;
+}
+
+.wisteria_purple {
+  background-color: #BEAEE2;
+}
+
+
+
+
+
+
 
 /* ----- */
 .dark_moss_green { 
