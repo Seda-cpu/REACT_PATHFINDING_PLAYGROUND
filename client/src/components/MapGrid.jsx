@@ -4,6 +4,8 @@ import { GradientTexture } from '@react-three/drei'
 
 const GRID_SIZE = 10
 const CELL_SIZE = 1
+const GAP = 0.05
+const FINAL_SIZE = CELL_SIZE - GAP
 
 const MapGrid = ({onCellClick}) => {
 
@@ -14,6 +16,8 @@ const MapGrid = ({onCellClick}) => {
 
     const addAudio = new Audio('/sounds/pillar-add.mp3')
     const removeAudio = new Audio('/sounds/pillar-remove.mp3')
+
+    const [hoveredCell, setHoveredCell] = useState(null)
 
     useEffect(() => {
         const initial = []
@@ -92,12 +96,17 @@ const MapGrid = ({onCellClick}) => {
             {grid.flat().map((cell, idx) => (
               <mesh
                 key={idx}
-                position={[cell.x + cell.x * 0.05, 0, cell.z + cell.z * 0.05]}
+                position={[cell.x, 0, cell.z]}
+                scale={hoveredCell === idx ? [1.05, 1, 1.05] : [1, 1, 1]}
                 onClick={() => handleClick(cell.x, cell.z)}
+                onPointerOver={() => setHoveredCell(idx)}
+                onPointerOut={() => setHoveredCell(null)}
               >
-                <boxGeometry args={[1, 0.05, 1]} />
+                <boxGeometry args={[FINAL_SIZE, 0.05, FINAL_SIZE]} />
                 <meshStandardMaterial
-                  color={cell.isObstacle ? '#DDA15E' : '#FEFAE0'}
+                    color={cell.isObstacle ? '#DDA15E' : '#FEFAE0'}
+                    emissive={hoveredCell === idx ? '#DDA15E' : 'black'}
+                    emissiveIntensity={hoveredCell === idx ? 0.5 : 0}
                 />
                 
               </mesh>
