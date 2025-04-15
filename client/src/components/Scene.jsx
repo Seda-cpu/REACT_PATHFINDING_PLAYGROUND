@@ -78,7 +78,14 @@ const Scene = () => {
             <ambientLight intensity={0.3}/>
             <spotLight position={[10, 20, 10]} angle={0.35} penumbra={1} intensity={1} castShadow/>
             <directionalLight position={[5,10,5]}/>
-            <OrbitControls/>
+            <OrbitControls
+                maxPolarAngle={Math.PI/2-(10*Math.PI/180)}
+                minPolarAngle={-Math.PI/2+(10*Math.PI/180)}
+                minDistance={3}
+                maxDistance={1000}
+                enableDamping="True"
+                dampingFactor={0.5}
+                />
             <gridHelper args={[20, 20, 'rgb(117, 185, 173)', 'rgb(117, 185, 173)']} />
             <MapGrid onCellClick={handleCellClick}/>
             <Suspense fallback={<Loader/>}>
