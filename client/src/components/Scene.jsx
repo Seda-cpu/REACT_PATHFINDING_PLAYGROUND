@@ -8,6 +8,7 @@ import { getGridMatrix } from './utils/getGridMatrix'
 import { requestAStarPath } from '../api'
 import Target from './Target'
 import { Suspense } from 'react'
+import PathLine from './PathLine'
 
 function Loader () {
     const { progress } = useProgress()
@@ -83,6 +84,10 @@ const Scene = () => {
             <Suspense fallback={<Loader/>}>
                 {targetPos && <Target position={targetPos} /> } 
                 <Cat path={path} />
+                {/* {path.length > 1 && <PathLine path={path} color="#CDF0EA" thickness={0.05} />} */}
+                {path.length > 1 && <PathLine path={path} color="#DDA15E" />}
+                
+
                 <Preload all />
             </Suspense>
 
