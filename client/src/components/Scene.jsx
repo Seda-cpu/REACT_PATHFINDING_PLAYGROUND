@@ -92,7 +92,7 @@ const Scene = () => {
                 {targetPos && <Target position={targetPos} /> } 
                 <Cat path={path} />
                 {/* {path.length > 1 && <PathLine path={path} color="#CDF0EA" thickness={0.05} />} */}
-                {path.length > 1 && <PathLine path={path} color="#DDA15E" />}
+                {path.length > 1 && <PathLine path={path} color="#F9F9F9" />}
                 
 
                 <Preload all />
