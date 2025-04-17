@@ -60,3 +60,15 @@ Yanık turuncu: 	#BC6C25	Hover / aktif durumlar
 # Modeller 
 * https://free3d.com/3d-model/wolf-cfaracter-lowpoly-769211.html
 * https://free3d.com/3d-model/cat-cartoon-rigged-520849.html
+
+
+# SHORTEST PATH ALGORITHMS
+
+
+Algoritma	En Kısa Yolu Bulur mu?	Heuristic Kullanır mı?	Performans (Genelde)	Avantajı	Dezavantajı
+Dijkstra	                ✅ Evet	❌ Hayır	            Orta	Tüm yolları bulur, garantilidir	Gereksiz yere fazla düğüm arar
+A*	                        ✅ Evet	✅ Evet	            Yüksek (iyi heuristic ile)	Hedefe odaklı, verimli	Heuristic kötü ise yavaşlar
+Greedy Best-First	        ❌ Hayır	✅ Evet	            Çok hızlı	Hızlı, hedefe çabuk ulaşır	En kısa yolu garanti etmez
+BFS (Genişlik Öncelikli)	✅ Evet	❌ Hayır	            Yavaş	Basit, ağırlıksız gridde ideal	Büyük gridlerde çok yavaş
+DFS (Derinlik Öncelikli)	❌ Hayır	❌ Hayır	            Hızlı ama dengesiz	Bellek dostu	Genelde kötü yollar bulur
+Bidirectional Search	    ✅ Evet	❌/✅ Opsiyonel	   Çok hızlı	Çift taraflı arama	Karmaşık implementasyon

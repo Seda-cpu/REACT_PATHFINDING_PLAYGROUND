@@ -19,4 +19,6 @@ export const useSimStore = create((set) => ({
   robotType: 'amr',
   setRobotType: (type) => set({ robotType: type }),
 
+  algorithm: 'astar',
+  setAlgorithm: (type) => set({ algorithm: type }),
 }))

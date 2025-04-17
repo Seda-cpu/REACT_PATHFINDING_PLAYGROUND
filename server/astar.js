@@ -2,11 +2,11 @@ function astar (grid, start, goal) {
     const rows = grid.length
     const cols = grid[0].length
 
-    const openSet = [start]
-    const cameFrom = new Map()
+    const openSet = [start] //Henüz ziyaret edilmemiş ziyaret edilmesi gereken düğümlerdir.
+    const cameFrom = new Map() //Hangi hücrenin hangi hücreden geldiğini tutar, geri yol çizmek için.
 
-    const g_score = {}
-    const f_score = {}
+    const g_score = {} //Baslangictan o hucreye kadar olan gercek maliyet
+    const f_score = {} // f_score = g_score + h
     
     const key = (p) => `${p.x},${p.z}`
 
@@ -16,33 +16,33 @@ function astar (grid, start, goal) {
             g_score[k] = Infinity
             f_score[k] = Infinity
         }
-    }
+    } //her nokta icin baslangicta degerler sonsuz atanir.
 
-    g_score[key(start)] = 0
+    g_score[key(start)] = 0 //baslangic noktasinin kendisine olan mesafesi 0'dir.
     f_score[key(start)] = heuristic(start, goal)
 
 
-    while (openSet.length > 0) {
-        openSet.sort((a,b) => f_score[key(a)] - f_score[key(b)])
+    while (openSet.length > 0) { //Ziyaret edilmesi gereken dugumler 
+        openSet.sort((a,b) => f_score[key(a)] - f_score[key(b)]) //f_score'a göre sıralanır.
 
-        const current = openSet.shift()
+        const current = openSet.shift() //en dusuk f_score'a sahip olan node alinir.
         const curKey = key(current)
 
-        if(current.x === goal.x && current.z === goal.z) {
+        if(current.x === goal.x && current.z === goal.z) { //Hedefe ulaşıldıysa yol geri cizilir.
             return reconstructPath(cameFrom, current)
         }
 
-        for(const neighbor of getNeighbors(current, grid)){
-            const neighborKey = key(neighbor)
-            const tentativeG = g_score[curKey] + 1
+        for(const neighbor of getNeighbors(current, grid)){ //komsu hucreler gezilir.
+            const neighborKey = key(neighbor) //komşunun g_score'u guncellenir.
+            const tentativeG = g_score[curKey] + 1 
 
-            if (tentativeG < g_score[neighborKey]) {
+            if (tentativeG < g_score[neighborKey]) { //eger yeni deger eski degerden daha iyiyse daha kısa yoldur.
                 cameFrom.set(neighborKey, current)
                 g_score[neighborKey] = tentativeG
                 f_score[neighborKey] = tentativeG + heuristic(neighbor, goal)
         
                 if (!openSet.some((p) => p.x === neighbor.x && p.z === neighbor.z)) {
-                  openSet.push(neighbor)
+                  openSet.push(neighbor) //ve openset'e eklenir.
                 }
             }
         }
@@ -53,7 +53,7 @@ function astar (grid, start, goal) {
 function getNeighbors(node, grid){
     const {x,z} = node
     const moves = [
-        [0, 1], [1, 0], [0, -1], [-1, 0]
+        [0, 1], [1, 0], [0, -1], [-1, 0] //sag, asagi, sol, yukari komsular
     ]
     const neighbors  = []
     for (const [dx, dz] of moves) {
@@ -66,13 +66,13 @@ function getNeighbors(node, grid){
     }
     return neighbors
 }
-      
-function heuristic(a, b) {
+       
+function heuristic(a, b) { //Manhattan Mesafesi
     return Math.abs(a.x - b.x) + Math.abs(a.z - b.z)
 }
   
 
-function reconstructPath(cameFrom, current) {
+function reconstructPath(cameFrom, current) { //Hedeften başlayıp, cameFrom map’ini izleyerek başlangıca kadar yolu oluşturur.
     const path = [current]
     let key = `${current.x},${current.z}`
     while (cameFrom.has(key)) {
