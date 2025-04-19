@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react'
 import Cat from './Cat'
 import { useSimStore } from './store/useSimStore'
 import { getGridMatrix } from './utils/getGridMatrix'
-import { requestAStarPath } from '../api'
+import { requestPathAlgorithm } from '../api'
 import Target from './Target'
 import { Suspense } from 'react'
 import PathLine from './PathLine'
@@ -35,6 +35,7 @@ const Scene = () => {
     const path = useSimStore((s) => s.path)
     const setPath = useSimStore((s) => s.setPath)
 
+    const algorithm = useSimStore((s) => s.algorithm);
 
     /* console.log("grid: ", grid); */
     /* console.log("targetPos: ", targetPos);
@@ -56,7 +57,8 @@ const Scene = () => {
             z: targetPos[1]
         }
 
-        requestAStarPath(matrix, start, goal).then((path) => {
+
+        requestPathAlgorithm(matrix, start, goal, algorithm).then((path) => {
             console.log("Gelen path: ", path)
             setPath(path)
         })

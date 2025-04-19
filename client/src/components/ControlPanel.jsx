@@ -62,10 +62,7 @@ const ControlPanel = () => {
                 </div>
             )
         }
-       
         </>
     )
-
 }
-
 export default ControlPanel

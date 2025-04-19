@@ -67,7 +67,7 @@ function getNeighbors(node, grid){
     return neighbors
 }
        
-function heuristic(a, b) { //Manhattan Mesafesi
+function heuristic(a, b) { //Manhattan 
     return Math.abs(a.x - b.x) + Math.abs(a.z - b.z)
 }
   

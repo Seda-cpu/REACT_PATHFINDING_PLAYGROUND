@@ -5,7 +5,7 @@ export const getBackendMessage = async () => {
   return res.data;
 };
 
-export const requestAStarPath = async (gridMatrix, start, goal) => {
+/* export const requestAStarPath = async (gridMatrix, start, goal) => {
   try{
     const res = await axios.post('http://localhost:3001/astar', {
       grid: gridMatrix,
@@ -17,4 +17,20 @@ export const requestAStarPath = async (gridMatrix, start, goal) => {
     console.log("A* API error: ", error)
     return []
   }
-}
+} */
+
+export const requestPathAlgorithm = async (gridMatrix, start, goal, algorithm) => {
+  try{
+    console.log("algorithm: ", algorithm);
+    const res = await axios.post('http://localhost:3001/path', {
+      grid: gridMatrix,
+      start,
+      goal,
+      algorithm
+    })
+    return res.data.path
+  }catch (error) {
+    console.log("Path API error: ", error)
+    return []
+  }
+};
